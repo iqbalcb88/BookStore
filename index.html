@@ -12,6 +12,8 @@
       integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
       crossorigin="anonymous"
     />
+    <!-- Css -->
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <!-- Header Section -->
@@ -31,6 +33,7 @@
           placeholder="Search Your Book"
         />
         <span
+          id="search-click"
           onclick="loadData()"
           class="input-group-text px-5 user-select-none"
           >Search</span
@@ -39,11 +42,16 @@
       <p id="books-number" class="w-50 mx-auto"></p>
       <!-- End of Search Input -->
       <!--Start Cards -->
-      <div id="cards" class="card-group row w-75 mx-auto"></div>
+      <div
+        id="cards"
+        class="row row-cols-1 row-cols-lg-5 g-2 g-lg-3 w-75 mx-auto"
+      ></div>
       <!--End Cards -->
     </main>
     <!-- Footer Section -->
-    <footer></footer>
+    <footer>
+      <p class="my-5 py-5 text-center">&copy; All Right Reserved</p>
+    </footer>
     <!-- Bootstrap Js CDN -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"

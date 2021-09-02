@@ -31,7 +31,7 @@ const displayData = (booksObject) => {
   booksArray.forEach((element) => {
     const index = booksArray.indexOf(element);
     // console.log(element);
-    if (index <= 4) {
+    if (index <= 9) {
       console.log(element);
       let imgUrl = `https://covers.openlibrary.org/b/id/${element.cover_i}-M.jpg`;
       // if cover not found default cover photo will set
@@ -41,7 +41,7 @@ const displayData = (booksObject) => {
 
       // console.log(imgUrl);
       const singleCard = document.createElement('div');
-      singleCard.classList.add('card', 'col-4');
+      singleCard.classList.add('card', 'col');
       const authorsArr = element.author_name;
       singleCard.innerHTML = `
       <img src="${imgUrl}" height=300 class="card-img-top" alt="Book Cover Not Found" />
