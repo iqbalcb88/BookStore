@@ -63,10 +63,3 @@ const displayData = (booksObject) => {
     }
   });
 };
-
-// function authorName(inputArr) {
-//   inputArr.forEach((ele) => {
-//     console.log(ele);
-//     // document.getElementById('author').innerText = ele;
-//   });
-// }
