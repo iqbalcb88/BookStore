@@ -1,32 +1,49 @@
 const inputField = document.getElementById('input-field');
+const booksNumber = document.getElementById('books-number');
+const cardDiv = document.getElementById('cards');
+document.getElementById('error-message').style.display = 'none';
+document.getElementById('spinner').style.display = 'none';
+cardDiv.textContent = '';
 
 const loadData = () => {
   // console.log('Clicked');
   const inputText = inputField.value;
 
-  // console.log(inputValue);
-  const url = `https://openlibrary.org/search.json?q=${inputText}`;
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => displayData(data));
+  if (inputText === '') {
+    displayError();
+  } else {
+    // Display Spinner
+    document.getElementById('spinner').style.display = 'block';
+    // Hide error
+    document.getElementById('error-message').style.display = 'none';
+    // Clear Team Details
+    cardDiv.textContent = '';
+    // Clear Search Result
+    booksNumber.innerText = '';
+    // load data
+    const url = `https://openlibrary.org/search.json?q=${inputText}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => displayData(data));
+  }
   inputField.value = '';
-  booksNumber.innerText = '';
-  cardDiv.innerText = '';
 };
 
-const booksNumber = document.getElementById('books-number');
-const cardDiv = document.getElementById('cards');
-
+//function display data
 const displayData = (booksObject) => {
-  cardDiv.textContent = '';
   // console.log(booksObject);
   // console.log('clicked');
+
+  //Show number of books found by search
   const numOfBooks = booksObject.numFound;
   if (numOfBooks === 0) {
-    booksNumber.innerText = `Sorry!!! No Books Found.`;
+    displayError();
   } else {
+    document.getElementById('error-message').style.display = 'none';
+    document.getElementById('spinner').style.display = 'none';
     booksNumber.innerText = `About ${booksObject.numFound} Books Found.`;
   }
+
   // loop through the docs array
   const booksArray = booksObject.docs;
   // console.log(booksArray);
@@ -62,4 +79,11 @@ const displayData = (booksObject) => {
       cardDiv.appendChild(singleCard);
     }
   });
+};
+// display Error
+const displayError = () => {
+  document.getElementById('error-message').style.display = 'block';
+  document.getElementById('spinner').style.display = 'none';
+  document.getElementById('cards').textContent = '';
+  booksNumber.innerText = '';
 };
