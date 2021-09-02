@@ -48,8 +48,14 @@ const displayData = (booksObject) => {
       singleCard.innerHTML = `
       <img src="${imgUrl}" height=300 class="card-img-top" alt="Book Cover Not Found" />
         <div class="card-body">
-          <h5 class="card-title text-white bg-success">Books Name: ${element.title}</h5>
-          <h6v id="author" class="card-title">First Publish Year: ${element.first_publish_year}</h6v>
+          <h5 class="card-title text-white bg-success">Books Name: ${
+            element.title
+          }</h5>
+          <h6v id="author" class="card-title">First Publish Year: ${
+            element.first_publish_year
+              ? element.first_publish_year
+              : 'Publish year not found'
+          }</h6v>
           <p class="card-text">Authors: ${authorsArr}</p>
         </div>
       `;
