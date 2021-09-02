@@ -10,6 +10,8 @@ const loadData = () => {
     .then((res) => res.json())
     .then((data) => displayData(data));
   inputField.value = '';
+  booksNumber.innerText = '';
+  cardDiv.innerText = '';
 };
 
 const booksNumber = document.getElementById('books-number');
